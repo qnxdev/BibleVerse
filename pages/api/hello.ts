@@ -9,7 +9,7 @@ type Data = {
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<any>,
+  res: NextApiResponse<any>
 ) {
   console.log(parseInt(`${req.query.book}`));
 
@@ -44,17 +44,17 @@ export default async function handler(
           }
         ); */
 
-      fs.appendFile(
+      await fs.appendFile(
         (j + 1).toString() + ".json",
         JSON.stringify(ch["Verse"]),
         function (err: any) {
           if (err) throw err;
           //console.log("Saved!");
-        },
+        }
       );
     });
-    process.chdir("../../");
     console.log("wr " + dir);
+    process.chdir("../../");
     //});
   } catch (error) {
     console.log("err directory: " + process.cwd());
