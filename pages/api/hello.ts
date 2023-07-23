@@ -9,12 +9,14 @@ type Data = {
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<any>
+  res: NextApiResponse<any>,
 ) {
+  console.log(parseInt(`${req.query.book}`));
+
+  const index: number = parseInt(`${req.query.book}`);
   var fs = require("fs");
   try {
     //books.map(async (book, k) => {
-    const index = 2;
     const dir = "./text/" + books[index];
     try {
       // first check if the directory already exists
@@ -30,7 +32,7 @@ export default async function handler(
     const chapters = full[index]["Chapter"];
     console.log(chapters.length, "length");
 
-    chapters.map(async (ch, j) => {
+    chapters.map(async (ch: any, j: number) => {
       /* await fs.writeFile(
           (j + 1).toString() + ".json",
           JSON.stringify(ch["Verse"]),
@@ -48,7 +50,7 @@ export default async function handler(
         function (err: any) {
           if (err) throw err;
           //console.log("Saved!");
-        }
+        },
       );
     });
     process.chdir("../../");
@@ -58,5 +60,5 @@ export default async function handler(
     console.log("err directory: " + process.cwd());
   }
 
-  res.status(200).json({ books: "done" });
+  res.status(200).json({ books: index + "done" });
 }
