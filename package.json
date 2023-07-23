@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "pretty": "prettier --write \"./**/*.{js,jsx,ts,tsx,json}\"",
+    "pretty": "prettier --staged --write \"./**/*.json\"",
     "lint": "next lint"
   },
   "dependencies": {
