@@ -14,7 +14,8 @@ export default async function handler(
   var fs = require("fs");
   try {
     //books.map(async (book, k) => {
-    const dir = "./text/" + books[0];
+    const index = 2;
+    const dir = "./text/" + books[index];
     try {
       // first check if the directory already exists
       if (!fs.existsSync(dir)) {
@@ -26,8 +27,8 @@ export default async function handler(
     }
 
     process.chdir(dir);
-    const chapters = full[0]["Chapter"];
-    console.log(chapters.length);
+    const chapters = full[index]["Chapter"];
+    console.log(chapters.length, "length");
 
     chapters.map(async (ch, j) => {
       /* await fs.writeFile(
