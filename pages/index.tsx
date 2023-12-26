@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const [index, setIndex] = useState(20);
+  const [index, setIndex] = useState(21);
   const fn = async () => {
     await fetch("/api/hello?book=" + index);
     setIndex(index + 1);
